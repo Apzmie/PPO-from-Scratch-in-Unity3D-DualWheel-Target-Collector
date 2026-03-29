@@ -21,6 +21,7 @@ You can play against the target collector AI directly in your browser [Play on i
 ### GAE (Generalized Advantage Estimation)
 The TD error ($\delta$) evaluates whether the action taken in the current state was good or bad, representing the basic advantage. To estimate the advantage more accurately, the next state's advantage is added to the current one recursively to include future information. This means that the advantage added to the first one incorporates the entire future information of a trajectory, which is enabled by calculating GAE backwards when implementing. Gamma ($\gamma$) 0.99 is multiplied to make the current more important than the future, and lambda ($\lambda$) 0.95 is multiplied instead of using 1, which trusts the whole trajectory completely.
 
-### Maximizing Objective Function
+### Loss
+The objective function has to be maximized to properly adjust action probabilities, and entropy has to be maximized to encourage exploration. However, PyTorch's autograd is designed to minimize the loss when calculating gradients. The solution is to apply a negative sign to maximize them. Value loss is multiplied by a coefficient of 0.5 to prioritize policy loss, and entropy loss is multiplied by a coefficient like 0.001 to allow for small exploration.
 
 ### Iterative Update
