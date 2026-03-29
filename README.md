@@ -4,3 +4,5 @@ Because directly maximizing rewards is difficult to optimize due to high varianc
 In this project, PPO is used with an MLP, taking the agent’s velocities, configurable joint velocities, and the relative target position as inputs, with the target angular velocities for each joint as outputs. PPO is implemented in PyTorch, based on the paper [*Proximal Policy Optimization Algorithms*](https://arxiv.org/pdf/1707.06347).
 
 You can play against the target collector AI directly in your browser [Play on itch.io](https://apzmie.itch.io/target-collector-ai), on both PC and mobile devices.
+
+<img src="images/target_collector.png" alt="target_collector" width="40%">
