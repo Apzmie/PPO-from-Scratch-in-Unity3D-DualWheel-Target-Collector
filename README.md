@@ -27,6 +27,9 @@ The objective function has to be maximized to properly adjust action probabiliti
 ### Iterative Update
 Once all transitions are collected, the parameters are updated using mini-batches to adjust the gradient direction little by little, with multiple epochs to maximize learning from a limited amount of data. This iterative update does not change the policy dramatically due to clipping mechanism.
 
+### Buffer
+To make the GAE calculation correct, each agent has an independent buffer and stops collecting transitions when the episode ends, even if it hasn't reached the target_transitions yet. Once all agents finish their collection, GAE is calculated for each buffer, and then the parameters are updated. Max step is not applied during training so that the agent can experience everything that happens later.
+
 ### Zero Gradient
 ![zero_gradient](images/zero_gradient.png)
 
